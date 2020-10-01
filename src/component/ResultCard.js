@@ -9,6 +9,7 @@ class ResultCard extends Component {
                 <div className="result-card">
                     <div className="poster-wrapper">
 
+
                         {movie.poster_path? (
 
                             <img className="card-img-top image"

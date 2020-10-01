@@ -33,6 +33,17 @@ class Search extends Component {
       .catch(function (error) {
         console.log(error);
       });
+    console.log(this.state.data);
+    // this.props.history.push({
+    //   pathname:'/resultcard'
+    // });
+    // // this.props.history.push({
+    //   pathname:"/resultcard",
+    //   state:{
+    //     data:this.state.data
+    //   }
+    //
+    // })
   }
   render() {
     // console.log(this.state.data)

@@ -1,12 +1,9 @@
 //eslint-disable-next-line
 
 import React, { Component } from "react";
-import axios from "axios";
 import "./style.css";
 import NavBar from "./NavBar";
-import List from "./List";
-import { BrowserRouter as Router, NavLink, Route } from "react-router-dom";
-let api_key = "ac0283efec6b8411d0ef6be46a722f8c";
+import { BrowserRouter as Router,NavLink } from "react-router-dom";
 
 
 class Home extends Component {
