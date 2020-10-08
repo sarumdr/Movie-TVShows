@@ -1,11 +1,9 @@
 import React, {Component} from "react";
-import Container from 'react-bootstrap/Container';
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Media from "react-bootstrap/Media";
+import '../component/style.css'
 
 import axios from "axios";
 import '../component/style.css'
+import NavBar from "./NavBar";
 
 const API_KEY = "ac0283efec6b8411d0ef6be46a722f8c";
 
@@ -17,9 +15,10 @@ class Detail extends Component {
         type: "",
     };
 
+
     componentDidMount() {
         console.log('details', this.id);
-        console.log('data', this.props.location.state.details);
+        console.log('data', this.props.location.state.type);
         let id = this.id;
         let type = this.props.location.state.type;
         axios
@@ -49,42 +48,56 @@ class Detail extends Component {
         console.log(type);
          let d = new Date(datas.release_date);
          let release_date = d.getFullYear();
-        return (
-            // <div>
-            //     <h1>Hello</h1>
-            // </div>
-            <Container>
-                <Row>
-                    <Col xl={6}>
+         console.log('realease',release_date)
+         let air_date=new Date(datas.first_air_date);
+         let first_air_date=air_date.getFullYear();
+         console.log(first_air_date);
+         console.log(datas.homepage);
+         // let genres=datas.genres.map(genre=>{
+         //     return <button>genre.name</button>
+         // })
+        let original_title=datas.original_title;
+         return (
+                <div>
+                <NavBar/>
+                <div className={'row detail'}>
+                    <div className={'col-lg-3'}>
                     {datas.poster_path ? (
 
                     <img
-                        className="card-img-top image"
+                        className="detailimage"
                         alt="..."
                         src={`https://image.tmdb.org/t/p/w500${datas.poster_path}`}
                     />
                 ) : (
-                    <div className="card-header">
+                    <div className="header-info">
                         <h3 className="info">No poster</h3>
                     </div>
                 )}
-                    </Col>
-                <Col xl={6}>
-                {this.props.type === "movie"? (
+                    </div>
+                <div className={'col-lg-6 details'}>
+                {type === 'movie' && (
+                            <div>
                             <h3 className="info">{datas.title}</h3>
-                        ):
-                        (
-                            <h3 className="info">{datas.name}</h3>
+                            <button className={'detailbtn'}>{release_date}</button>
+                                {/*{genres}*/}
+                            </div>
                         )}
-                    <button>{release_date}</button>
+                    {type=== 'tv' && (
+                            <div>
+                            <h3 className="info">{datas.name}</h3>
+                            <button className={'detailbtn'}>{first_air_date}</button>
+                            </div>
+                        )}
 
-                    <h3>{datas.overview}</h3>
+                    <h3 className={'detaildesc'}>{datas.overview}</h3>
                     {/*{genre}*/}
-
-                </Col>
-            </Row>
-            </Container>
-
+                    {datas.video &&
+                    <iframe src={datas.video} title="W3Schools Free Online Web Tutorials">v</iframe>
+                    }
+                </div>
+            </div>
+           </div>
         );
     }
 }

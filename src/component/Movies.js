@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import List from './List';
-
+import './style.css'
 //import List from './List';
 let api_key="ac0283efec6b8411d0ef6be46a722f8c";
 
@@ -33,13 +33,13 @@ class Movie extends Component{
     
 
     render(){
-      
+      console.log(this.state.type)
         return(
-            <div>
+            <section >
                 <List 
                 datas={this.state.data} 
                 type={this.state.type}/>
-                  </div>    
+            </section>
         )
     }
 }

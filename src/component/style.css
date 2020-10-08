@@ -1,5 +1,6 @@
 body{
-    background-image:linear-gradient(to left,blue,purple,red);
+    /*background-image:linear-gradient(to left,blue,purple,red);*/
+    background-color: black;
 }
 .navName{
     color:wheat !important;
@@ -27,22 +28,104 @@ body{
 
 .btn{
     padding:20px 80px;
-    color:black;
+    color:white;
     margin-right: 10px;
+    background-color: red;
 }
 
 
-/*List*/
-.image{
-display: flex;
-flex-wrap: wrap;
-    margin: 0px;
+/*!*List*!*/
+/*.image{*/
+/*display: flex;*/
+/*flex-wrap: wrap;*/
+/*    margin: 0px;*/
+/*    flex-direction: column;*/
+/*width: 200px;*/
+/*!*}*!*/
+/*.results{*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    flex-wrap: wrap;*/
+/*    margin: 0px -15px;*/
+
+/*}*/
+.result{
+    padding: 0px 10px;
+}
+.results .result{
+    width: 20%;
+    min-width: 260px;
+    padding: 15px;
+    display: flex;
+    flex: 50%;
     flex-direction: column;
-width: 200px;
+    cursor: pointer;
 }
-.container{
-    margin:10px 10px;
-    width: 100%;
-    max-width: 200px;
-    height: 360px;
+
+.results .result img{
+    display: block;
+    width: 90%;
+    height: 300px;
+    margin: 30px 0 10px 10px;
+
+    }
+
+.results .result h3{
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+    background: #445565;
+    flex: 1 1 100%;
+    transition: 0.4s ease-out;
+
+}
+
+.results .result:hover h3{
+    background: #FFFFFF;
+    color: #0f6674;
+}
+
+/*Search*/
+.search-box input[type=text] {
+    border-bottom: 1px solid #4dd0e1;
+    box-shadow: 0 1px 0 0 #4dd0e1;
+    margin-bottom: 10px;
+}
+/*Detail page*/
+.detail{
+    display: flex;
+}
+.detailimage{
+    padding: 25px 20px;
+    height: 80%;
+}
+.details{
+    padding-left: 100px;
+    padding-right: 10px;
+    margin-top: 30px;
+}
+.header-info{
+    padding-top: 30px;
+}
+.info{
+    color: darkred;
+    font-style: italic;
+    font-size: 50px;
+}
+
+.detailbtn{
+    background-color: darkred;
+    color: white;
+}
+
+.detaildesc{
+    color: #86cfda;
+    font-style: italic;
+    font-weight: unset;
+    font-size: 40px;
+}
+
+.row{
+    margin-top: 10px;
 }

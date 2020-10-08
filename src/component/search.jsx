@@ -1,75 +1,57 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, {Component} from "react";
+//import axios from "axios";
 import ResultCard from "./ResultCard";
+import {withRouter} from 'react-router-dom';
 
-let api_key = "ac0283efec6b8411d0ef6be46a722f8c";
+//let api_key = "ac0283efec6b8411d0ef6be46a722f8c";
+
 class Search extends Component {
-  state = {
-    query: "",
-    data: [],
-  };
+    state = {
+        query: "",
+        data: [],
+    };
 
-  handleChange(e) {
-    e.preventDefault();
-    console.log(e.target);
-    this.setState({
-      query: e.target.value,
-    });
-    //console.log(this.state.query)
-    let query = this.state.query;
-    console.log(query);
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&include_adult=false&query=${query}`
-      )
-      .then((response) => {
-        let data = response && response.data;
-        //console.log(data)
+    handleChange(e) {
+        e.preventDefault();
+        console.log(e.target);
         this.setState({
-          data: data.results,
-          show: true,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    console.log(this.state.data);
-    // this.props.history.push({
-    //   pathname:'/resultcard'
-    // });
-    // // this.props.history.push({
-    //   pathname:"/resultcard",
-    //   state:{
-    //     data:this.state.data
-    //   }
-    //
-    // })
-  }
-  render() {
-    // console.log(this.state.data)
-    return (
-      <div className="container">
-        <div className="input-wrapper">
-          <input
-            type="text"
-            placeholder="Search for a movie"
-            onChange={this.handleChange.bind(this)}
-          />
-        </div>
-        {this.state.data.length > 0 && (
-          <ul className="results">
-            {this.state.data.map((result) => {
-              return (
-                <li key={result.id}>
-                  <ResultCard movie={this.state.data} />
-                </li>
-              );
-            })}
-          </ul>
-        )}
-      </div>
-    );
-  }
+            query: e.target.value,
+        })
+    }
+
+    handleSubmit(type) {
+        console.log("fun",type);
+
+        
+        this.props.history.push({
+            pathname: '/resultcard',
+            state: {
+                query: this.state.query,
+                type:type
+            }
+        })
+    }
+
+    render() {
+        let type1=this.props.type;
+         console.log(type1);
+        return (
+            <div className="container">
+                <div className="input-wrapper">
+                    <form className="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2"
+                          onSubmit={this.handleSubmit.bind(this,type1)}>
+                        <input className="form-control form-control-sm mr-3 w-75"
+                               type="text"
+                               placeholder="Search"
+                               aria-label="Search"
+                               onChange={this.handleChange.bind(this)}/>
+                    </form>
+
+                </div>
+
+            </div>
+        );
+    }
 }
 
-export default Search;
+export default withRouter(Search);

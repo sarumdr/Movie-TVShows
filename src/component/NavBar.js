@@ -7,7 +7,7 @@ class NavBar extends Component{
         return(
             <div>
             <nav className="navbar ">
-                <Link className="navbar-brand navName" to='/'>TvShowsApp </Link>
+                <Link className="navbar-brand navName" to='/'>Movie & Tv Shows </Link>
                 <p className='a'>aaa</p>
             </nav>
             </div>
